@@ -23,6 +23,11 @@ class Node:
             else:
                 self.right.insert(data)
 
+    def delete(self, data):
+        '''Delete a value from the tree
+        '''
+        pass
+
     def contains(self, data):
         '''Check if tree contains value. Returns True if exists
            and False if not
@@ -41,20 +46,29 @@ class Node:
                 else:
                     return self.right.contains(data)
 
-    def print_left_right(self):
+    def print_preorder(self):
         '''Prints the values of the tree from left to right
         '''
         if self.left is not None:
-            self.left.print_inplace()
+            self.left.print_preorder()
         print(self.value)
         if self.right is not None:
-            self.right.print_inplace()
+            self.right.print_preorder()
 
-    def print_right_left(self):
+    def print_postorder(self):
         '''Prints the values of the tree from right to left
         '''
         if self.right is not None:
-            self.right.print_right_left()
+            self.right.print_postorder()
         print(self.value)
         if self.left is not None:
-            self.left.print_right_left()
+            self.left.print_postorder()
+
+    def print_inorder(self):
+        '''Print the values of the tree from root to children
+        '''
+        print(self.value)
+        if self.left is not None:
+            self.left.print_inorder()
+        if self.right is not None:
+            self.right.print_inorder()
